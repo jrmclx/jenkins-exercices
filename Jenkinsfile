@@ -3,7 +3,7 @@ environment { // Declaration of environment variables
 REGISTRY_ID = "registry.gitlab.com/jrm-grp/devops-gitlab"
 REGISTRY_USER = "jrmclx"
 DOCKER_IMAGE = "jnkns-fastapi"
-DOCKER_TAG = "v..0" // we will tag our images with the current build in order to increment the value by 1 with each new build
+DOCKER_TAG = "v.${BUILD_ID}.0" // we will tag our images with the current build in order to increment the value by 1 with each new build
 }
 agent any // Jenkins will be able to select all available agents
 stages {
