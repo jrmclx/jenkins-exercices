@@ -1,6 +1,7 @@
 pipeline {
 environment { // Declaration of environment variables
-REGISTRY_ID = "registry.gitlab.com/jrm-grp/devops-gitlab" // replace this with your docker-id
+REGISTRY_ID = "registry.gitlab.com/jrm-grp/devops-gitlab"
+REGISTRY_USER = "jrmclx"
 DOCKER_IMAGE = "jnkns-fastapi"
 DOCKER_TAG = "v..0" // we will tag our images with the current build in order to increment the value by 1 with each new build
 }
@@ -47,7 +48,7 @@ stages {
 
                 script {
                 sh '''
-                docker login -u $REGISTRY_ID -p $DOCKER_PASS
+                echo $DOCKER_PASS | docker login registry.gitlab.co -u $REGISTRY_USER --password-stdin
                 docker push $REGISTRY_ID/$DOCKER_IMAGE:$DOCKER_TAG
                 '''
                 }
