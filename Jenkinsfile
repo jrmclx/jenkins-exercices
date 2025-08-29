@@ -49,7 +49,7 @@ stages {
 
                 script {
                 sh '''
-                echo $DOCKER_PASS | docker login registry.gitlab.co -u $REGISTRY_USER --password-stdin
+                echo $DOCKER_PASS | docker login registry.gitlab.com -u $REGISTRY_USER --password-stdin
                 docker push $REGISTRY_ID/$DOCKER_IMAGE:$DOCKER_TAG
                 '''
                 }
